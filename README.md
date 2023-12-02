@@ -20,7 +20,7 @@ dependencies {
 
 ## Usage
 
-Suppose `/home/michael/project/.gitignore` contains the following:
+Suppose `/home/project/.gitignore` contains the following:
 
 ```
 # Ignore Gradle project-specific cache directory
