@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.github.Fs02:gitignore-parser:1.0.0'
+    implementation 'com.github.fs02:gitignore-parser:1.0.0'
 }
 ```
 
