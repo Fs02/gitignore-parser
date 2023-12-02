@@ -1,8 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 
-group = "com.github.fs02"
-version = "0.1.0"
-
 plugins {
     kotlin("jvm") version "1.9.21"
     `java-library`
@@ -34,6 +31,10 @@ testing {
 publishing {
     publications {
         create<MavenPublication>("maven") {
+//            groupId = "com.github.fs02"
+//            artifactId = "gitignore-parser"
+//            version = "0.1.0"
+
             from(components["java"])
         }
     }
