@@ -1,8 +1,22 @@
 # gitignore-parser
 
+[![](https://jitpack.io/v/Fs02/gitignore-parser.svg)](https://jitpack.io/#Fs02/gitignore-parser)
+
 A spec-compliant gitignore parser for Kotlin/JVM.
 
 Kotlin port from: https://github.com/mherrmann/gitignore_parser
+
+## Download
+
+```
+repositories {
+    maven { url 'https://jitpack.io' }
+}
+
+dependencies {
+    implementation 'com.github.Fs02:gitignore-parser:1.0.0'
+}
+```
 
 ## Usage
 
