@@ -9,7 +9,7 @@ class Gitignore(reader: Reader, path: Path, baseDir: Path = path.parent) {
     private val rules = mutableListOf<IgnoreRule>()
 
     constructor(str: String, baseDir: Path): this(str.reader(), baseDir.resolve(".gitignore"), baseDir)
-    constructor(path: Path, baseDir: Path = path.parent): this(path.toFile().bufferedReader(), baseDir.resolve(".gitignore"), baseDir)
+    constructor(baseDir: Path): this(baseDir.resolve(".gitignore").toFile().bufferedReader(), baseDir.resolve(".gitignore"), baseDir)
 
     init {
         reader.useLines { lines ->
@@ -176,9 +176,7 @@ class Gitignore(reader: Reader, path: Path, baseDir: Path = path.parent) {
         } else {
             res.add(0, "(^|$sepsGroup)")
         }
-        if (!directoryOnly) {
-            res.add("$")
-        } else if (directoryOnly && negation) {
+        if (directoryOnly && negation) {
             res.add("/$")
         } else {
             res.add("($|\\/)") // You may need to adjust this line based on your exact requirements

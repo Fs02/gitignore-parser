@@ -36,6 +36,27 @@ class GitignoreTest {
     }
 
     @Test
+    fun testMatchDirectoryAndFile() {
+        val gitignore = Gitignore(
+            """
+            foo
+            !**/foo/negated
+            """.trimIndent(),
+            Path.of("/home/michael")
+        )
+        assertTrue(gitignore.match("/home/michael/foo"))
+        assertTrue(gitignore.match("/home/michael/foo/"))
+        assertTrue(gitignore.match("/home/michael/foo/bar"))
+        assertTrue(gitignore.match("/home/michael/bar/foo"))
+        assertTrue(gitignore.match("/home/michael/bar/foo/bar"))
+
+        assertFalse(gitignore.match("/home/michael/foo/negated"))
+        assertFalse(gitignore.match("/home/michael/foo/negated/baz"))
+        assertFalse(gitignore.match("/home/michael/bar/foo/negated"))
+        assertFalse(gitignore.match("/home/michael/bar/foo/negated/baz"))
+    }
+
+    @Test
     fun testWildcard() {
         val gitignore = Gitignore(
             "hello.*",
