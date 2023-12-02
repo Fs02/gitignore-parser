@@ -33,7 +33,7 @@ build
 Then:
 
 ```kotlin
-import fs02.gitignore.parser.Gitignore
+import com.github.fs02.gitignore.parser.Gitignore
 import java.nio.file.Path
 
 fun main() {
