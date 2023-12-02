@@ -1,4 +1,4 @@
-package fs02.gitignore.parser
+package com.github.fs02.gitignore.parser
 
 import java.io.Reader
 import java.nio.file.FileSystems

@@ -14,4 +14,3 @@ plugins {
 }
 
 rootProject.name = "gitignore-parser"
-include("lib")

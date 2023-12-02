@@ -1,8 +1,12 @@
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 
+group = "com.github.fs02"
+version = "0.1.0"
+
 plugins {
     kotlin("jvm") version "1.9.21"
     `java-library`
+    `maven-publish`
 }
 
 repositories {
@@ -23,6 +27,14 @@ testing {
         val test by getting(JvmTestSuite::class) {
             // Use Kotlin Test test framework
             useKotlinTest("1.9.21")
+        }
+    }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])
         }
     }
 }

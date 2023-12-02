@@ -1,4 +1,5 @@
-import fs02.gitignore.parser.Gitignore
+package com.github.fs02.gitignore.parser
+
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import java.nio.file.Files
