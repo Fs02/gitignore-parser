@@ -3,7 +3,7 @@ package com.github.fs02.gitignore.parser
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import java.nio.file.Files
-import java.nio.file.Path
+import java.nio.file.Paths
 import kotlin.io.path.createTempDirectory
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
@@ -16,7 +16,7 @@ class GitignoreTest {
         val gitignore = Gitignore(
             "__pycache__/\n" +
                     "*.py[cod]",
-            Path.of("/home/michael")
+            Paths.get("/home/michael")
         )
         assertFalse(gitignore.match("/home/michael/main.py"))
         assertTrue(gitignore.match("/home/michael/main.pyc"))
@@ -26,7 +26,7 @@ class GitignoreTest {
 
     @Test
     fun testIncompleteFilename() {
-        val gitignore = Gitignore("o.py",  Path.of("/home/michael/.gitignore"))
+        val gitignore = Gitignore("o.py",  Paths.get("/home/michael/.gitignore"))
         assertTrue(gitignore.match("/home/michael/o.py"))
         assertFalse(gitignore.match("/home/michael/foo.py"))
         assertFalse(gitignore.match("/home/michael/o.pyc"))
@@ -42,7 +42,7 @@ class GitignoreTest {
             foo
             !**/foo/negated
             """.trimIndent(),
-            Path.of("/home/michael")
+            Paths.get("/home/michael")
         )
         assertTrue(gitignore.match("/home/michael/foo"))
         assertTrue(gitignore.match("/home/michael/foo/"))
@@ -60,7 +60,7 @@ class GitignoreTest {
     fun testWildcard() {
         val gitignore = Gitignore(
             "hello.*",
-            Path.of("/home/michael")
+            Paths.get("/home/michael")
         )
         assertTrue(gitignore.match("/home/michael/hello.txt"))
         assertTrue(gitignore.match("/home/michael/hello.foobar/"))
@@ -74,7 +74,7 @@ class GitignoreTest {
 
     @Test
     fun testSlashInRangeDoesNotMatchDirs() {
-        val gitignore = Gitignore("abc[X-Z/]def", Path.of("/home/michael"))
+        val gitignore = Gitignore("abc[X-Z/]def", Paths.get("/home/michael"))
         assertFalse(gitignore.match("/home/michael/abcdef"))
         assertTrue(gitignore.match("/home/michael/abcXdef"))
         assertTrue(gitignore.match("/home/michael/abcYdef"))

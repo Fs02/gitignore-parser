@@ -3,6 +3,7 @@ package com.github.fs02.gitignore.parser
 import java.io.Reader
 import java.nio.file.FileSystems
 import java.nio.file.Path
+import java.nio.file.Paths
 import kotlin.io.path.relativeTo
 
 class Gitignore(reader: Reader, path: Path, baseDir: Path = path.parent) {
@@ -23,7 +24,7 @@ class Gitignore(reader: Reader, path: Path, baseDir: Path = path.parent) {
     }
 
     fun match(path: String): Boolean {
-        return match(Path.of(path))
+        return match(Paths.get(path))
     }
 
     fun match(path: Path): Boolean {
@@ -185,7 +186,7 @@ class Gitignore(reader: Reader, path: Path, baseDir: Path = path.parent) {
     }
 
     private fun normalizePath(path: Path?): Path {
-        return path?.toAbsolutePath()?.normalize() ?: Path.of("")
+        return path?.toAbsolutePath()?.normalize() ?: Paths.get("")
     }
 
     companion object {

@@ -11,7 +11,7 @@ repositories {
 }
 
 kotlin {
-    jvmToolchain(11)
+    jvmToolchain(8)
     compilerOptions {
         languageVersion.set(KotlinVersion.KOTLIN_1_6)
         apiVersion.set(KotlinVersion.KOTLIN_1_6)
